@@ -64,6 +64,9 @@ const removeLastNumber = () => {
 
 document.querySelector("#apagar").addEventListener("click", removeLastNumber);
 
-const invertSignal = () => {}
+const invertSignal = () => {
+    newNumber = true;
+    updateDisplay  (display.textContent * -1);
+}
 
 document.querySelector("#inverter").addEventListener("click", invertSignal);
