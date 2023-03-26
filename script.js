@@ -1,8 +1,6 @@
-
 const display = document.querySelector("#display");
 const keys = document.querySelectorAll("[id*=tecla]");
 const operators = document.querySelectorAll("[id*=operador]");
-
 
 let newNumber = true;
 let operator;
@@ -26,7 +24,7 @@ keys.forEach(function (key) {
 });
 
 const selectOperator = (event) => {
-    previousNumber = display.textContent;
+    previousNumber =  parseFloat(display.textContent.replace(',', '.'));
     operator = event.target.textContent;
     newNumber = true;
 }
@@ -35,10 +33,10 @@ operators.forEach((key) => key.addEventListener("click", selectOperator));
 
 
 const calculate = () => {
-    const actualNumber = display.textContent;
-    const result = eval(previousNumber + operator + actualNumber);
-    newNumber = true;
-    updateDisplay(result);
+        const actualNumber = display.textContent; 
+        const result = eval(previousNumber + operator + actualNumber);
+        newNumber = true;
+        updateDisplay(result.toString().replace('.',',')); 
 }
 
 const equal = document.querySelector("#igual");
@@ -64,9 +62,22 @@ const removeLastNumber = () => {
 
 document.querySelector("#apagar").addEventListener("click", removeLastNumber);
 
-const invertSignal = () => {
-    newNumber = true;
-    updateDisplay  (display.textContent * -1);
+const invertSignal = () => { 
+    display.textContent = (-parseFloat(display.textContent.replace(",", ".")))
 }
 
 document.querySelector("#inverter").addEventListener("click", invertSignal);
+
+const decimalNumber = () => display.textContent.indexOf(',') !== -1;
+const withValue = () => display.textContent.length > 0;
+const insertDecimal = () => {
+    if (!decimalNumber ()) {
+        if (withValue()) {
+            updateDisplay(',');
+        } else {
+            updateDisplay('0,')
+        }
+    }
+}
+
+document.querySelector("#decimal").addEventListener("click", insertDecimal);
