@@ -24,6 +24,7 @@ body {
     height: 100vh;
     font-family: sans-serif;
     color: var(--cinza);
+    font-size: 20px;
 }
 
 .cabecalho {
@@ -34,7 +35,7 @@ body {
 }
 
 .foto-juliana {
-    width: 80px;
+    width: 100px;
     border-radius: 100%;
     border: 2px solid var(--rosa);
     margin-right: 1em;
@@ -52,7 +53,7 @@ main {
 }
 
 .calculadora {
-    width: 550px;
+    width: 450px;
     height: 600px;
     padding: 50px;
     border-radius: 16px;
@@ -75,7 +76,7 @@ main {
 }
 
 .container-buttons {
-    margin-top: 32px;
+    margin-top: 22px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 16px;
